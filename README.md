@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SGSC - Sistema de Gestión de Seguridad Ciudadana
 
-## Getting Started
+Sistema web para la Sub Gerencia de Seguridad Ciudadana de Asia (Cañete, Lima, Perú).
 
-First, run the development server:
+## Desarrollo local
+
+Para ejecutar el servidor de desarrollo:
 
 ```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Configuración de Supabase
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Crea una cuenta en [Supabase](https://supabase.com)
+2. Crea un nuevo proyecto
+3. En la sección SQL Editor, ejecuta las migraciones para crear las tablas necesarias
+4. Configura la autenticación por correo electrónico y contraseña
+5. Configura el almacenamiento para archivos (Storage)
+6. Actualiza los valores en `.env.local` y `.env.production` con tus credenciales
 
-## Learn More
+## Despliegue en Vercel
 
-To learn more about Next.js, take a look at the following resources:
+Para desplegar este proyecto en Vercel:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Crea una cuenta en [Vercel](https://vercel.com)
+2. Conecta tu repositorio de GitHub
+3. Configura las siguientes variables de entorno en Vercel:
+   - `NEXT_PUBLIC_SUPABASE_URL`: URL de tu proyecto en Supabase
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Clave anónima de tu proyecto en Supabase
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tecnologías utilizadas
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 15
+- Supabase (Auth, Database, Storage)
+- Tailwind CSS
+- TypeScript
+- React Icons
+- Chart.js
