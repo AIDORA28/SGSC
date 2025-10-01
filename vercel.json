@@ -1,11 +1,10 @@
 {
-  "version": 2,
   "buildCommand": "npm run build",
-  "installCommand": "npm install",
+  "installCommand": "npm ci",
   "framework": "nextjs",
-  "regions": ["cdg1"],
+  "regions": ["iad1"],
   "env": {
-    "NEXT_PUBLIC_SUPABASE_URL": "@next_public_supabase_url",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@next_public_supabase_anon_key"
+    "NEXT_PUBLIC_SUPABASE_URL": "https://tujyhprcjdmvwdvfmsbn.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1anlocHJjamRtdndkdmZtc2JuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3NjE4NjIsImV4cCI6MjA3NDMzNzg2Mn0.AgbyXFpckkUzLnmCvixvuV6Dh48Kv8PcHd9UYuFp-28"
   }
 }
