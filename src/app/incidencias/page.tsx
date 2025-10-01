@@ -3,8 +3,21 @@
 import { useState } from 'react';
 import { FaPlus, FaEdit, FaTrash, FaEye } from 'react-icons/fa';
 
+// Interface para definir el tipo de incidencia
+interface Incidencia {
+  id: string;
+  fecha: string;
+  hora: string;
+  tipo: string;
+  sector: string;
+  anexo: string;
+  reportadoPor: string;
+  estado: string;
+  descripcion: string;
+}
+
 // Datos de ejemplo para incidencias
-const incidenciasData = [
+const incidenciasData: Incidencia[] = [
   { id: '1', fecha: '2023-07-15', hora: '10:30', tipo: 'Robo', sector: 'Sector 1', anexo: 'Las Viñas', reportadoPor: 'COE', estado: 'Pendiente', descripcion: 'Robo de celular en vía pública' },
   { id: '2', fecha: '2023-07-15', hora: '12:15', tipo: 'Accidente', sector: 'Sector 2', anexo: 'Rosario de Asia', reportadoPor: 'Serenazgo a pie', estado: 'Resuelto', descripcion: 'Accidente de tránsito sin heridos' },
   { id: '3', fecha: '2023-07-15', hora: '14:45', tipo: 'Disturbio', sector: 'Sector 3', anexo: 'Capilla de Asia', reportadoPor: 'Operador de móvil', estado: 'Derivado PNP', descripcion: 'Pelea en vía pública' },
@@ -13,19 +26,19 @@ const incidenciasData = [
 export default function Incidencias() {
   const [incidencias, setIncidencias] = useState(incidenciasData);
   const [showModal, setShowModal] = useState(false);
-  const [currentIncidencia, setCurrentIncidencia] = useState<any>(null);
+  const [currentIncidencia, setCurrentIncidencia] = useState<Incidencia | null>(null);
   const [viewMode, setViewMode] = useState(false);
 
   const handleEdit = (id: string) => {
     const incidenciaToEdit = incidencias.find(i => i.id === id);
-    setCurrentIncidencia(incidenciaToEdit);
+    setCurrentIncidencia(incidenciaToEdit || null);
     setViewMode(false);
     setShowModal(true);
   };
 
   const handleView = (id: string) => {
     const incidenciaToView = incidencias.find(i => i.id === id);
-    setCurrentIncidencia(incidenciaToView);
+    setCurrentIncidencia(incidenciaToView || null);
     setViewMode(true);
     setShowModal(true);
   };

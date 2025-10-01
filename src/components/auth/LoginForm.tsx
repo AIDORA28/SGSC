@@ -17,7 +17,7 @@ export default function LoginForm() {
     setError(null);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -26,8 +26,9 @@ export default function LoginForm() {
       
       // Redirigir según el rol del usuario
       router.push('/dashboard');
-    } catch (error: any) {
-      setError(error.message || 'Error al iniciar sesión');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Error al iniciar sesión';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

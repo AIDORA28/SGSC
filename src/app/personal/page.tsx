@@ -3,8 +3,20 @@
 import { useState } from 'react';
 import { FaPlus, FaEdit, FaTrash } from 'react-icons/fa';
 
+// Interface para definir el tipo de personal
+interface Personal {
+  id: string;
+  dni: string;
+  nombres: string;
+  apellidos: string;
+  cargo: string;
+  estado: string;
+  sector: string;
+  turno: string;
+}
+
 // Datos de ejemplo para personal
-const personalData = [
+const personalData: Personal[] = [
   { id: '1', dni: '12345678', nombres: 'Juan', apellidos: 'Pérez', cargo: 'Sereno', estado: 'Activo', sector: 'Sector 1', turno: 'Mañana' },
   { id: '2', dni: '87654321', nombres: 'María', apellidos: 'López', cargo: 'Supervisor', estado: 'Activo', sector: 'Sector 2', turno: 'Tarde' },
   { id: '3', dni: '23456789', nombres: 'Carlos', apellidos: 'Gómez', cargo: 'Chofer', estado: 'Activo', sector: 'Sector 3', turno: 'Noche' },
@@ -14,11 +26,11 @@ const personalData = [
 export default function Personal() {
   const [personal, setPersonal] = useState(personalData);
   const [showModal, setShowModal] = useState(false);
-  const [currentPersonal, setCurrentPersonal] = useState<any>(null);
+  const [currentPersonal, setCurrentPersonal] = useState<Personal | null>(null);
 
   const handleEdit = (id: string) => {
     const personalToEdit = personal.find(p => p.id === id);
-    setCurrentPersonal(personalToEdit);
+    setCurrentPersonal(personalToEdit || null);
     setShowModal(true);
   };
 

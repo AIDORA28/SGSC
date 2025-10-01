@@ -1,7 +1,7 @@
 'use client';
 
 import { FaUsers, FaCarAlt, FaClipboardList, FaExclamationTriangle, FaVideo } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Componente de tarjeta para el dashboard
 const DashboardCard = ({ 
@@ -30,7 +30,7 @@ const DashboardCard = ({
 
 export default function Dashboard() {
   // En un sistema real, estos datos vendrían de la base de datos
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     personalActivo: 24,
     patrullajesHoy: 12,
     incidenciasHoy: 5,
