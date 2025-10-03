@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaUsers, FaClipboardList, FaCarAlt, FaVideo, FaExclamationTriangle, FaUserShield, FaChartBar, FaSignOutAlt } from 'react-icons/fa';
+import { FaUsers, FaClipboardList, FaCarAlt, FaVideo, FaExclamationTriangle, FaUserShield, FaChartBar, FaSignOutAlt, FaCog, FaCheckCircle, FaRoute, FaMoneyBillWave } from 'react-icons/fa';
 
 type SidebarProps = {
   role: 'admin' | 'obseciu' | 'coe' | 'supervisor' | 'camaras';
@@ -16,11 +16,14 @@ export default function Sidebar({ role }: SidebarProps) {
     const allModules = [
       { name: 'Dashboard', path: '/dashboard', icon: <FaChartBar className="w-5 h-5" /> },
       { name: 'Personal', path: '/personal', icon: <FaUsers className="w-5 h-5" /> },
-      { name: 'Patrullaje', path: '/patrullaje', icon: <FaClipboardList className="w-5 h-5" /> },
+      { name: 'Asistencias', path: '/asistencias', icon: <FaCheckCircle className="w-5 h-5" /> },
+      { name: 'Patrullajes', path: '/patrullajes', icon: <FaRoute className="w-5 h-5" /> },
       { name: 'Movilidades', path: '/movilidades', icon: <FaCarAlt className="w-5 h-5" /> },
       { name: 'Cabinas', path: '/cabinas', icon: <FaVideo className="w-5 h-5" /> },
+      { name: 'Vouchers', path: '/vouchers', icon: <FaMoneyBillWave className="w-5 h-5" /> },
       { name: 'Incidencias', path: '/incidencias', icon: <FaExclamationTriangle className="w-5 h-5" /> },
       { name: 'Supervisores', path: '/supervisores', icon: <FaUserShield className="w-5 h-5" /> },
+      { name: 'Administración', path: '/admin', icon: <FaCog className="w-5 h-5" /> },
     ];
 
     // Filtrar módulos según el rol
@@ -28,14 +31,16 @@ export default function Sidebar({ role }: SidebarProps) {
       case 'admin':
         return allModules;
       case 'obseciu':
-        return allModules;
+        return allModules.filter(m => 
+          !['Administración'].includes(m.name)
+        );
       case 'coe':
         return allModules.filter(m => 
-          ['Dashboard', 'Incidencias', 'Patrullaje'].includes(m.name)
+          ['Dashboard', 'Incidencias', 'Patrullajes', 'Asistencias'].includes(m.name)
         );
       case 'supervisor':
         return allModules.filter(m => 
-          ['Dashboard', 'Personal', 'Patrullaje', 'Supervisores'].includes(m.name)
+          ['Dashboard', 'Personal', 'Asistencias', 'Patrullajes', 'Supervisores'].includes(m.name)
         );
       case 'camaras':
         return allModules.filter(m => 

@@ -64,6 +64,8 @@ export type Database = {
           sector_id: string | null;
           kilometraje_inicial: number;
           kilometraje_final: number;
+          combustible_cargado: number | null;
+          estado: string;
           created_at: string;
         };
       };
@@ -78,6 +80,8 @@ export type Database = {
           anexo_id: string | null;
           personal_id: string;
           movilidad_id: string | null;
+          observaciones: string | null;
+          imagen_url: string | null;
           created_at: string;
         };
       };
@@ -102,7 +106,9 @@ export type Database = {
           personal_reporta: string;
           patrullaje_id: string | null;
           estado: string;
+          reportado_por: string | null;
           imagen_url: string | null;
+          parte_fisico_entregado: boolean;
           created_at: string;
         };
       };
@@ -112,11 +118,46 @@ export type Database = {
           fecha: string;
           cabina_id: string;
           personal_id: string;
+          turno_id: string | null;
           observaciones: string;
           imagen_url: string | null;
+          created_at: string;
+        };
+      };
+      asistencia: {
+        Row: {
+          id: string;
+          fecha: string;
+          turno_id: string;
+          sector_id: string;
+          personal_id: string;
+          estado_asistencia: string;
+          observaciones: string | null;
+          supervisor_id: string | null;
+          parte_fisico_entregado: boolean;
+          created_at: string;
+        };
+      };
+      voucher: {
+        Row: {
+          id: string;
+          fecha: string;
+          tipo: string;
+          concepto: string;
+          monto: number;
+          responsable_id: string;
+          movilidad_id: string | null;
+          numero_voucher: string | null;
+          imagen_voucher_url: string | null;
+          estado: string;
+          aprobado_por: string | null;
+          observaciones: string | null;
           created_at: string;
         };
       };
     };
   };
 };
+
+// Cliente tipado para operaciones con esquema
+export const supabaseDb = createClient<Database>(supabaseUrl, supabaseKey);
